@@ -8,9 +8,10 @@ import (
 
 func HandleJSON(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
-	response := make(map[string]string)
+	response := make(map[string]interface{})
 	response["message"] = "Hello, World!"
 	response["status"] = "success"
+	response["code"] = http.StatusOK
 	jsonResponse, err := json.Marshal(response)
 	if err != nil {
 		log.Fatal(err)
